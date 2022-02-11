@@ -17,13 +17,8 @@ eksctl create cluster --name ghost-kubctl --region eu-west-1
 
         kubectl get nodes -o wide
 
-    # Output
-
-
     # b. View the workloads running on your cluster.
 
          kubectl get pods --all-namespaces -o wide
-
-    # Output
 
 
