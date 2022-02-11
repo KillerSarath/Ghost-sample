@@ -1,0 +1,130 @@
+# IAM role for EKS node
+
+Policy Attachments
+
+AmazonEKSClusterPolicy
+AmazonEKSWorkerNodePolicy
+AmazonEKSServicePolicy
+AmazonEKS_CNI_Policy
+AmazonEKSVPCResourceController
+
+# eksctl-ghost-kubctl-cluster-ServiceRole
+
+Policy Attachments
+
+AmazonEKSClusterPolicy
+AmazonEKSVPCResourceController
+eksctl-ghost-kubctl-cluster-PolicyCloudWatchMetrics
+eksctl-ghost-kubctl-cluster-PolicyELBPermissions
+
+# eksctl-ghost-kubctl-nodegroup-ng-NodeInstanceRole
+
+Policy Attachments
+
+AmazonEKSWorkerNodePolicy
+AmazonEC2ContainerRegistryReadOnly
+AmazonSSMManagedInstanceCore
+AmazonEKS_CNI_Policy
+
+# EKS service roles
+
+# AWSServiceRoleForAmazonEKS
+Policy Attachment
+
+AmazonEKSServiceRolePolicy
+
+# AWSServiceRoleForAmazonEKSNodegroup
+Policy Attachment
+
+AWSServiceRoleForAmazonEKSNodegroup
+
+# AWSServiceRoleForAutoScaling
+Policy Attachment
+
+AutoScalingServiceRolePolicy
+
+# AWSServiceRoleForElasticLoadBalancing
+Policy Attachment
+
+AWSElasticLoadBalancingServiceRolePolicy
+
+# AWSServiceRoleForGlobalAccelerator
+Policy Attachment
+
+AWSGlobalAcceleratorSLRPolicy
+
+# AWSServiceRoleForSupport
+Policy Attachment
+
+AWSSupportServiceRolePolicy
+
+# AWSServiceRoleForTrustedAdvisor
+Policy Attachment
+
+AWSTrustedAdvisorServiceRolePolicy
+
+# codebuild-ghost-build-service-role
+Policy Attachment
+
+AmazonEKSClusterPolicy
+AmazonEKSWorkerNodePolicy
+AmazonEKSServicePolicy
+AmazonEKS_CNI_Policy
+AmazonEKSVPCResourceController
+CodeBuildBasePolicy-sample-ghost-eu-west-1
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:logs:eu-west-1:176181560477:log-group:/aws/codebuild/sample-ghost",
+                "arn:aws:logs:eu-west-1:176181560477:log-group:/aws/codebuild/sample-ghost:*"
+            ],
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::codepipeline-eu-west-1-*"
+            ],
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:GetObjectVersion",
+                "s3:GetBucketAcl",
+                "s3:GetBucketLocation"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::ghost",
+                "arn:aws:s3:::ghost/*"
+            ],
+            "Action": [
+                "s3:PutObject",
+                "s3:GetBucketAcl",
+                "s3:GetBucketLocation"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "codebuild:CreateReportGroup",
+                "codebuild:CreateReport",
+                "codebuild:UpdateReport",
+                "codebuild:BatchPutTestCases",
+                "codebuild:BatchPutCodeCoverages"
+            ],
+            "Resource": [
+                "arn:aws:codebuild:eu-west-1:176181560477:report-group/sample-ghost-*"
+            ]
+        }
+    ]
+}
