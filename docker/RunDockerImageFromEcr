@@ -1,0 +1,12 @@
+# After all DockerInstallationOnEC2, PullDockerImage, PushDockerImage, you can finally see your docker image being pushed to ECR and now ready to consume.
+# We will delete the local image first and then try to pull it back from the ECR.
+
+
+# To pull docker image from ECR
+
+docker pull 176181560477.dkr.ecr.region.amazonaws.com/nordcloud-ghost
+
+# To run docker image on EC2 from ECR
+
+docker run --rm 176181560477.dkr.ecr.region.amazonaws.com/nordcloud-ghost
+

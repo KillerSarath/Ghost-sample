@@ -1,0 +1,15 @@
+# To will start a Ghost instance listening on the default Ghost port of 2368.
+
+docker run -d --name some-ghost ghost
+
+# To access the instance from the host without the container's IP, standard port mappings can be used
+
+docker run -d --name some-ghost -e url=http://localhost:3001 -p 3001:2368 ghost
+
+# If all goes well, you'll be able to access your new site on http://localhost:3001 and http://localhost:3001/ghost to access Ghost Admin (or http://host-ip:3001 and http://host-ip:3001/ghost, respectively)
+# To Mount your existing content. In this example we also use the Alpine base image.
+
+docker run -d --name some-ghost -p 3001:2368 -v /path/to/ghost/blog:/var/lib/ghost/content ghost:alpine
+
+# Database - This Docker image for Ghost uses SQLite. There is nothing special to configure.
+# Reference : https://hub.docker.com/_/ghost?tab=description
