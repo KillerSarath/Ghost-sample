@@ -1,2 +1,29 @@
-# Getting started with AWS EKS - eksctl
+# Getting started with AWS EKS
+# Prerequisites
+# kubectl – A command line tool for working with Kubernetes clusters.
+# eksctl – A command line tool for working with EKS clusters that automates many individual tasks.
+# Required IAM permissions – The IAM security principal that you're using must have permissions to work with Amazon EKS IAM roles and service linked roles, AWS CloudFormation, and a VPC and related resources.
+
+# Step 1: Create your Amazon EKS cluster and nodes
+
+eksctl create cluster --name ghost-kubctl --region eu-west-1
+
+# Output
+
+  [✓]  EKS cluster "ghost-kubctl" in "eu-west-1" region is ready
+
+# Step 2: View Kubernetes resources
+    # a. View your cluster nodes.
+
+        kubectl get nodes -o wide
+
+    # Output
+
+
+    # b. View the workloads running on your cluster.
+
+         kubectl get pods --all-namespaces -o wide
+
+    # Output
+
 
