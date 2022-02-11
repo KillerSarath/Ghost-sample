@@ -1,0 +1,26 @@
+# Installing kubectl
+# kubectl – A command line tool for working with Kubernetes clusters
+
+# 1. To install kubectl - Kubernetes 1.21 on Linux
+
+curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/kubectl
+
+# 2. (Optional) Verify the downloaded binary with the SHA-256 sum for your binary
+
+curl -o kubectl.sha256 https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/kubectl.sha256
+
+# 3. Apply execute permissions to the binary
+
+chmod +x ./kubectl
+
+# 4. Copy the binary to a folder in your PATH. If you have already installed a version of kubectl, then we recommend creating a $HOME/bin/kubectl and ensuring that $HOME/bin comes first in your $PATH.
+
+mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+
+# 5. (Optional) Add the $HOME/bin path to your shell initialization file so that it is configured when you open a shell.
+
+echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+
+# 6. After you install kubectl, you can verify its version with the following command
+
+kubectl version --short --client
